@@ -1,0 +1,12 @@
+@ECHO OFF
+:BOT
+CALL "%userprofile%\pewhopenv\Scripts\activate.bat"
+python -O -m DISCbot pewhopbot
+
+IF %ERRORLEVEL% == 1 GOTO RESTART_BOT
+IF %ERRORLEVEL% == 26 GOTO RESTART_BOT
+EXIT /B %ERRORLEVEL%
+
+:RESTART_BOT
+ECHO Restarting...
+GOTO BOT
